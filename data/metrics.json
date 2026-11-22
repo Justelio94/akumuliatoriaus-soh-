@@ -1,0 +1,226 @@
+{
+  "cleaning": {
+    "rows": 21519,
+    "missing_before": {
+      "ocv_v": 0,
+      "v_crank_min_v": 0,
+      "temp_c": 335,
+      "charge_time_min": 234
+    },
+    "outliers_removed": {
+      "ocv_v": 85,
+      "v_crank_min_v": 140,
+      "temp_c": 0,
+      "charge_time_min": 0
+    },
+    "missing_after": 0
+  },
+  "dataset": {
+    "batteries": 80,
+    "rows": 21519
+  },
+  "split": {
+    "train": {
+      "batteries": 55,
+      "rows": 14657
+    },
+    "val": {
+      "batteries": 13,
+      "rows": 3532
+    },
+    "test": {
+      "batteries": 12,
+      "rows": 3330
+    }
+  },
+  "soh_best_iteration": 135,
+  "soh": {
+    "Baseline: LinearRegression (tik ciklai)": {
+      "RMSE": 0.04375278971393814,
+      "MAE": 0.03442652824044285,
+      "R2": 0.6460064776738931
+    },
+    "LinearRegression (visi požymiai)": {
+      "RMSE": 0.014444429465750116,
+      "MAE": 0.011417133988230892,
+      "R2": 0.9614180120017033
+    },
+    "RandomForest (visi požymiai)": {
+      "RMSE": 0.018060010373576362,
+      "MAE": 0.012596009419099044,
+      "R2": 0.9396857672693916
+    },
+    "Proposed: XGBoost (visi požymiai)": {
+      "RMSE": 0.014700416266463838,
+      "MAE": 0.010601372494597337,
+      "R2": 0.9600383803479676
+    },
+    "Abliacija: XGBoost be temperatūros": {
+      "RMSE": 0.020039969798731582,
+      "MAE": 0.015311417406328447,
+      "R2": 0.9257360676273055
+    }
+  },
+  "soh_error_by_temp": {
+    "< -5 °C": {
+      "n": 478,
+      "MAE_xgb": 0.009389665026445268,
+      "MAE_xgb_notemp": 0.013507510893314952,
+      "MAE_baseline": 0.030494044672445937
+    },
+    "-5…5 °C": {
+      "n": 1020,
+      "MAE_xgb": 0.011295327696613237,
+      "MAE_xgb_notemp": 0.015718248282694348,
+      "MAE_baseline": 0.03405395376031579
+    },
+    "5…15 °C": {
+      "n": 1169,
+      "MAE_xgb": 0.011273746512015728,
+      "MAE_xgb_notemp": 0.015698076595619666,
+      "MAE_baseline": 0.03548062316338277
+    },
+    "> 15 °C": {
+      "n": 663,
+      "MAE_xgb": 0.009221819911427448,
+      "MAE_xgb_notemp": 0.015304321217860574,
+      "MAE_baseline": 0.035976326355548975
+    }
+  },
+  "soh_cv_rmse": {
+    "baseline": {
+      "mean": 0.048927147984765704,
+      "std": 0.002638870868355858
+    },
+    "xgb": {
+      "mean": 0.015742851283313108,
+      "std": 0.001472527786709765
+    }
+  },
+  "rul": {
+    "Baseline: LinearRegression (tik ciklai)": {
+      "RMSE": 836.0171462985759,
+      "MAE": 684.459271062478,
+      "R2": 0.26459946931227274
+    },
+    "LinearRegression (visi požymiai)": {
+      "RMSE": 463.7623532754036,
+      "MAE": 332.91120287173754,
+      "R2": 0.7737000011378374
+    },
+    "1-as bandymas: XGBoost (grynas)": {
+      "RMSE": 556.4469875918101,
+      "MAE": 416.68011474609375,
+      "R2": 0.6742074489593506
+    },
+    "Proposed: LR + XGBoost liekanos (hibridas)": {
+      "RMSE": 446.81980168452236,
+      "MAE": 314.29035785817524,
+      "R2": 0.7899327295026737
+    }
+  },
+  "rul_interval_80_coverage": 0.7753973738769868,
+  "rul_interval_mean_width": 1234.17431640625,
+  "rul_months_MAE": {
+    "baseline": 10.427002946348638,
+    "xgb": 4.531026230575833
+  },
+  "rul_mae_by_soh": {
+    "0,80–0,85": {
+      "n": 470,
+      "MAE_baseline": 616.6523789107107,
+      "MAE_xgb": 169.57454332665347,
+      "MAE_xgb_pure": 201.52626037597656
+    },
+    "0,85–0,90": {
+      "n": 812,
+      "MAE_baseline": 521.5200130157539,
+      "MAE_xgb": 203.26148393772735,
+      "MAE_xgb_pure": 310.81951904296875
+    },
+    "0,90–0,95": {
+      "n": 804,
+      "MAE_baseline": 668.5368744977014,
+      "MAE_xgb": 272.2443891426014,
+      "MAE_xgb_pure": 431.8260192871094
+    },
+    "0,95–1,00": {
+      "n": 808,
+      "MAE_baseline": 903.4908597794968,
+      "MAE_xgb": 551.8854535271608,
+      "MAE_xgb_pure": 633.1452026367188
+    }
+  },
+  "replace_soon": {
+    "Baseline: LinearRegression (tik ciklai)": {
+      "F1": 0.06580829756795423,
+      "Precision": 1.0,
+      "Recall": 0.034023668639053255,
+      "Accuracy": 0.8039039039039039,
+      "confusion": [
+        [
+          2654,
+          0
+        ],
+        [
+          653,
+          23
+        ]
+      ]
+    },
+    "Proposed: XGBoost SOH + hibridinis RUL": {
+      "F1": 0.8637602179836512,
+      "Precision": 0.8005050505050505,
+      "Recall": 0.9378698224852071,
+      "Accuracy": 0.93993993993994,
+      "confusion": [
+        [
+          2496,
+          158
+        ],
+        [
+          42,
+          634
+        ]
+      ]
+    }
+  },
+  "leakage_random_split_rul": {
+    "RMSE": 135.91215999451632,
+    "MAE": 94.90724182128906,
+    "R2": 0.9810987710952759
+  },
+  "shap_mean_abs_soh": {
+    "heat_stress_cum": 0.04186346009373665,
+    "ocv_v": 0.009633524343371391,
+    "short_trip_share": 0.009390831924974918,
+    "cycle": 0.008951490744948387,
+    "charge_roll": 0.006960684899240732,
+    "dv_25_roll": 0.0047324178740382195,
+    "dv_25": 0.003695537569001317,
+    "charge_time_min": 0.0036747287958860397,
+    "temp_c": 0.0012888683704659343,
+    "temp_mean_cum": 0.0010128498543053865,
+    "dv_25_slope": 4.163159610470757e-05,
+    "dv": 3.802340870606713e-05
+  },
+  "single_measurement_soh": {
+    "RMSE": 0.018595504983955857,
+    "MAE": 0.012994537997918802,
+    "R2": 0.9360560044265538
+  },
+  "test_battery_ids": [
+    0,
+    4,
+    10,
+    12,
+    18,
+    22,
+    28,
+    30,
+    31,
+    33,
+    49,
+    70
+  ]
+}
